@@ -25,12 +25,20 @@
     <h1>カードサンプル</h1>
     
     <div id="app" class="card-columns" v-for="todo in todos">
-        <div class="card">
-            <!-- <img class="card-img-top img-fluid" src="" alt=""> -->
+      
+        <div class="card" v-if="ok">
+            <img class="card-img-top img-fluid" src="" alt="">
             <div class="card-block">
                 <p class="card-text">{{ todo.text }}</p>
             </div>
         </div>
+      
+        <div class="card" v-else>
+            <div class="card-block">
+                <p class="card-text">{{ todo.text }}</p>
+            </div>
+        </div>
+      
     </div>
 
     <!-- jQuery first, then Tether, then Bootstrap JS. -->
