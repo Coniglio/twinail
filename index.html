@@ -24,8 +24,8 @@
   
     <h1>カードサンプル</h1>
     
-    <div id="app" class="card-columns">
-        <div class="card" v-for="todo in todos">
+    <div id="app" class="card-columns" v-for="todo in todos">
+        <div class="card">
             <!-- <img class="card-img-top img-fluid" src="" alt=""> -->
             <div class="card-block">
                 <p class="card-text">{{ todo.text }}</p>
