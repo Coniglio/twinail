@@ -28,12 +28,12 @@
     
     <div id="app" class="card-columns">
       
-      <div class="card" v-for="todo in todos">
+      <div class="card" v-for="nice in nieces">
         
           <img class="card-img-top img-fluid" src="" alt="" v-if="false">
         
           <div class="card-block">
-              <p class="card-text">{{ todo.text }}</p>
+              <p class="card-text">{{ nice.text }}</p>
           </div>
         
       </div>
@@ -50,14 +50,17 @@
     
     <script type="text/javascript">
         var app = new Vue({
-          el: '#app',
-          data: {
-            todos: [
-              { text: 'Learn JavaScript' },
-              { text: 'Learn Vue' },
-              { text: 'Build something awesome' }
-            ]
-          }
+            el: '#app',
+            data: {
+                nieces: [
+                ]
+            },
+		    mounted() {
+		        axios.get("https://api.twitter.com/1.1/favorites/list.json?user_id=coniglio21728")
+			    .then(response => {
+			        this.nieces = response.data
+			    })
+		    }
         })
     </script>
 
