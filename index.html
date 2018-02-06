@@ -24,15 +24,13 @@
   
     <h1>カードサンプル</h1>
     
-    <div id="app" class="card-columns" v-for="todo in todos">
+    <div id="app" class="card-columns">
       
-      <div class="card" v-if="todo.image">
-          <img class="card-img-top img-fluid" src="" alt="">
-          <div class="card-block">
-              <p class="card-text">{{ todo.text }}</p>
-          </div>
-      </div>
-      <div class="card" v-else>
+      <div class="card" v-for="todo in todos">
+        
+        
+          <img class="card-img-top img-fluid" src="" alt="" v-if="todo.imageExists">
+        
           <div class="card-block">
               <p class="card-text">{{ todo.text }}</p>
           </div>
@@ -53,9 +51,9 @@
           el: '#app',
           data: {
             todos: [
-              { image: false, text: 'Learn JavaScript' },
-              { image: false, text: 'Learn Vue' },
-              { image: false, text: 'Build something awesome' }
+              { imageExists: false, text: 'Learn JavaScript' },
+              { imageExists: false, text: 'Learn Vue' },
+              { imageExists: false, text: 'Build something awesome' }
             ]
           }
         })
