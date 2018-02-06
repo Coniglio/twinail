@@ -26,18 +26,17 @@
     
     <div id="app" class="card-columns" v-for="todo in todos">
       
-        <div class="card" v-if="ok">
-            <img class="card-img-top img-fluid" src="" alt="">
-            <div class="card-block">
-                <p class="card-text">{{ todo.text }}</p>
-            </div>
-        </div>
-      
-        <div class="card" v-else>
-            <div class="card-block">
-                <p class="card-text">{{ todo.text }}</p>
-            </div>
-        </div>
+      <div class="card" v-if="todo.isImage">
+          <img class="card-img-top img-fluid" src="" alt="">
+          <div class="card-block">
+              <p class="card-text">{{ todo.text }}</p>
+          </div>
+      </div>
+      <div class="card" v-else>
+          <div class="card-block">
+              <p class="card-text">{{ todo.text }}</p>
+          </div>
+      </div>
       
     </div>
 
@@ -54,9 +53,9 @@
           el: '#app',
           data: {
             todos: [
-              { text: 'Learn JavaScript' },
-              { text: 'Learn Vue' },
-              { text: 'Build something awesome' }
+              { image: false, text: 'Learn JavaScript' },
+              { image: false, text: 'Learn Vue' },
+              { image: false, text: 'Build something awesome' }
             ]
           }
         })
