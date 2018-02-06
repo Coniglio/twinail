@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
     
     <style type="text/css">
+    <!--
         .card-columns {
           @include media-breakpoint-only(lg) {
             column-count: 4;
@@ -17,6 +18,7 @@
             column-count: 5;
           }
         }
+    -->
     </style>
     
   </head>
@@ -28,12 +30,12 @@
       
       <div class="card" v-for="todo in todos">
         
-        
-          <img class="card-img-top img-fluid" src="" alt="" v-if="todo.imageExists">
+          <img class="card-img-top img-fluid" src="" alt="" v-if="false">
         
           <div class="card-block">
               <p class="card-text">{{ todo.text }}</p>
           </div>
+        
       </div>
       
     </div>
@@ -51,9 +53,9 @@
           el: '#app',
           data: {
             todos: [
-              { imageExists: false, text: 'Learn JavaScript' },
-              { imageExists: false, text: 'Learn Vue' },
-              { imageExists: false, text: 'Build something awesome' }
+              { text: 'Learn JavaScript' },
+              { text: 'Learn Vue' },
+              { text: 'Build something awesome' }
             ]
           }
         })
