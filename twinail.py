@@ -4,13 +4,6 @@ import configparser
 import urllib
 import oauth2 as oauth
 
-request_token_url = ''
-access_token_url = ''
-authenticate_url = ''
-callback_url = ''
-consumer_key = ''
-consumer_secret = ''
-
 def oauth_request(url, key, secret, http_method='GET', post=body='', http_headers=None):
     
     config = configparser.ConfigParser()
