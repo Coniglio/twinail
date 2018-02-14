@@ -1,20 +1,26 @@
-# -*- coding:utf-8 -*-
+# -*-p coding:utf-8 -*-
 
-import configparser
+from flask import Flask
+from flask_cors import CORS
+import ConfigParser
 import urllib
 import oauth2 as oauth
 
-def oauth_request(url, key, secret, http_method='GET', post=body='', http_headers=None):
+app = Flask(__name__)
+cors = CORS(app, resources={r"/*": {"origins":"*"}})
+
+@app.route("/")
+def oauth_request():
     
-    config = configparser.ConfigParser()
+    config = ConfigParser.ConfigParser()
     config.read('twitter.ini')
     
-    consumer = oauth2.Consumer(key=config['authentication']['consumer_key'], secret=config['authentication']['consumer_secret'])
-    token = oauth2.Token(key=key, secret=secret)
-    client = oauth2.Client(consumer, token)
-    response_page, content = client.request(url, method=http_method, body=post_body, headers=http_headers)
+    consumer = oauth.Consumer(key=config.get("authentication", "consumer_key"), secret=config.get("authentication", "consumer_secret"))
+    token = oauth.Token(key='', secret='')
+    client = oauth.Client(consumer, token)
+    response_page, content = client.request('https://api.twitter.com/1.1/favorites/list.json?count=200', method="GET", body="", headers=None)
     return content
 
 if __name__ == '__main__':
-    home_timeline = oauth_req( 'https://api.twitter.com/1.1/statuses/home_timeline.json', 'abcdefg', 'hijklmnop' )
-    print(home_timeline)
+    app.run(debug=False, host='0.0.0.0', port=5000)
+

@@ -28,12 +28,17 @@
     
     <div id="app" class="card-columns">
       
-      <div class="card" v-for="nice in nieces">
-        
-          <img class="card-img-top img-fluid" src="" alt="" v-if="false">
-        
-          <div class="card-block" v-if="true">
-              <p class="card-text">{{ nice.text }}</p>
+      <div class="card" v-for="favorite in favorites">
+          <template v-if="favorite.extended_entities != ''">
+              <template v-for="entity in favorite.extended_entities">
+                  <template v-for="media in entity">
+                      <img class="card-img-top img-fluid" v-bind:src="media.media_url_https" alt="">
+                  </template>
+              </template>
+          </template>
+
+          <div class="card-block">
+              <p class="card-text">{{ favorite.text }}</p>
           </div>
         
       </div>
@@ -53,13 +58,12 @@
         var app = new Vue({
             el: '#app',
             data: {
-                nieces: [
-                ]
+                favorites: []
             },
 		    mounted() {
-		        axios.get("https://api.twitter.com/1.1/favorites/list.json?user_id=")
+		        axios.get("")
 			    .then(response => {
-			        this.nieces = response.data
+			        this.favorites = response.data
 			    })
 		    }
         })
